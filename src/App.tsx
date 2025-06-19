@@ -2,6 +2,8 @@ import {useState} from 'react'
 import './App.scss'
 import { Button } from "antd";
 
+// TODO: Перенести код в FSD-структуру
+
 function App() {
     const [count, setCount] = useState(0)
 
