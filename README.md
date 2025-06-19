@@ -1,54 +1,56 @@
-# React + TypeScript + Vite
+# PrettyPet — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+PrettyPet — это веб-приложение для поиска, создания и управления исполнителями для пэт-проектов. Данный репозиторий содержит только фронтенд-часть проекта.
 
-Currently, two official plugins are available:
+## О проекте
+PrettyPet помогает пользователям:
+- Создавать свои пэт-проекты
+- Находить исполнителей и единомышленников
+- Управлять командами и задачами
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Технологический стек
+- **React** + **TypeScript**
+- **Vite** (сборка и dev-server)
+- **Redux Toolkit** (глобальное состояние)
+- **Ant Design** (UI-компоненты)
+- **Tailwind CSS** (утилитарные стили)
+- Архитектура: **FSD (Feature-Sliced Design)**
 
-## Expanding the ESLint configuration
+## Требования
+- **Node.js** >= 18.x
+- **npm** >= 9.x
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Установка и запуск
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+1. **Клонируйте репозиторий:**
+   ```bash
+   git clone https://github.com/your-username/pretty-pet-frontend.git
+   cd pretty-pet-frontend/frontend-react
+   ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. **Установите зависимости:**
+   ```bash
+   npm install
+   ```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+3. **Запустите проект в режиме разработки:**
+   ```bash
+   npm start
+   ```
+   После запуска приложение будет доступно по адресу, который покажет Vite (обычно http://localhost:5173).
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+4. **Сборка для продакшена:**
+   ```bash
+   npm run build
+   ```
+
+5. **Предпросмотр production-сборки:**
+   ```bash
+   npm run preview
+   ```
+
+## Структура проекта
+Проект построен по принципам FSD (Feature-Sliced Design). Подробнее см. [src/README_FSD.md](src/README_FSD.md).
+
+## Контакты
+Если есть вопросы или предложения — создавайте issue или pull request!
