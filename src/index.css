@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+/* CSS переменные для тем */
+:root {
+  /* Светлая тема (по умолчанию) */
+  --color-primary: #ef823d;
+  --color-text: #463033;
+  --color-bg: #ffffff;
+  --color-surface: #f8f9fa;
+  --color-surface-variant: #f1f3f4;
+  --color-text-primary: #463033;
+  --color-text-secondary: #6c757d;
+  --color-text-tertiary: #adb5bd;
+  --color-border: #e9ecef;
+  --color-border-variant: #dee2e6;
+  --color-hover: #f8f9fa;
+  --color-active: #e9ecef;
+  --color-disabled: #f8f9fa;
+  --color-success: #28a745;
+  --color-warning: #ffc107;
+  --color-error: #dc3545;
+  --color-info: #17a2b8;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+  --color-shadow-variant: rgba(0, 0, 0, 0.05);
+}
+
+/* Темная тема */
+.dark {
+  --color-primary: #ef823d;
+  --color-text: #ffffff;
+  --color-bg: #121212;
+  --color-surface: #1e1e1e;
+  --color-surface-variant: #2d2d2d;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #b0b0b0;
+  --color-text-tertiary: #808080;
+  --color-border: #404040;
+  --color-border-variant: #525252;
+  --color-hover: #2d2d2d;
+  --color-active: #404040;
+  --color-disabled: #1e1e1e;
+  --color-success: #4caf50;
+  --color-warning: #ff9800;
+  --color-error: #f44336;
+  --color-info: #2196f3;
+  --color-shadow: rgba(0, 0, 0, 0.3);
+  --color-shadow-variant: rgba(0, 0, 0, 0.2);
+}
+
+/* Глобальные стили */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin: 0;
+  padding: 0;
+}
+
+/* Стили для Ant Design компонентов */
+.ant-btn-primary {
+  background-color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+}
+
+.ant-btn-primary:hover {
+  background-color: var(--color-primary) !important;
+  opacity: 0.8;
+}
+
+/* Кастомные классы для использования в компонентах */
+.text-theme-primary {
+  color: var(--color-primary);
+}
+
+.bg-theme-primary {
+  background-color: var(--color-primary);
+}
+
+.text-theme-text {
+  color: var(--color-text-primary);
+}
+
+.bg-theme-surface {
+  background-color: var(--color-surface);
+}
+
+.border-theme-border {
+  border-color: var(--color-border);
+}
+
+.text-theme-text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-theme-text-tertiary {
+  color: var(--color-text-tertiary);
+}
+
+.bg-theme-hover {
+  background-color: var(--color-hover);
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Дополнительные стили для градиентов */
+.bg-gradient-to-br {
+  background: linear-gradient(to bottom right, var(--color-bg), var(--color-surface));
+}
