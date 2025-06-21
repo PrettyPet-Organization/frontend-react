@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ASSETS } from '../../../shared/config/assets';
 import UnauthorizedLayout from "../../../widgets/UnauthorizedLayout/UnauthorizedLayout.tsx";
 
 export const WelcomePage: React.FC = () => {
@@ -12,7 +13,7 @@ export const WelcomePage: React.FC = () => {
           {/* Логотип в кружке */}
           <div className="mb-8 animate-fade-in">
             <img
-                src="/logo.jpg"
+                src={ASSETS.logo}
                 alt="Pretty Pet Logo"
                 className="w-32 h-32 rounded-full object-cover shadow-lg border-4 border-theme-primary/20"
             />
