@@ -23,5 +23,8 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src"]
+  "include": [
+    "src",
+    "../../../Library/Caches/JetBrains/PhpStorm2025.1/javascript/typings/node/24.0.3/node_modules/@types/node/module.d.ts"
+  ]
 }

@@ -1,29 +1,38 @@
-import {useState} from 'react'
-import './App.scss'
-import { Button } from "antd";
+import { Provider } from 'react-redux';
+import { ConfigProvider, theme } from 'antd';
+import { store } from './app/store';
+import { useTheme } from './shared/lib/hooks/useTheme';
+import './App.scss';
+import {WelcomePage} from "./pages/Welcome/ui/WelcomePage.tsx";
 
-// TODO: Перенести код в FSD-структуру
+const AppContent = () => {
+  const { currentTheme } = useTheme();
 
+  return (
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: '#ef823d',
+          colorText: currentTheme === 'dark' ? '#ffffff' : '#463033',
+          colorBgContainer: currentTheme === 'dark' ? '#1e1e1e' : '#ffffff',
+          colorBorder: currentTheme === 'dark' ? '#404040' : '#e9ecef',
+          borderRadius: 6,
+        },
+        algorithm: currentTheme === 'dark' ? theme.darkAlgorithm : theme.defaultAlgorithm,
+      }}
+    >
+   <WelcomePage/>
+    </ConfigProvider>
+  );
+};
+
+// Главный компонент с Provider
 function App() {
-    const [count, setCount] = useState(0)
-
-    const increment = () => {
-        setCount(count + 1);
-    }
-
-
-    return (
-        <div className="w-full h-screen flex flex-col items-center justify-center gap-1.5">
-            <h1 className="text-6xl">
-                Pretty Pet Works
-            </h1>
-            <p>
-                count: {count}
-            </p>
-            <Button type="primary" onClick={increment}>increment</Button>
-
-        </div>
-    )
+  return (
+    <Provider store={store}>
+      <AppContent />
+    </Provider>
+  );
 }
 
-export default App
+export default App;
