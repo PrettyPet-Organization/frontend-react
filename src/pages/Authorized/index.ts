@@ -1,0 +1,1 @@
+export { AuthorizedPage } from './ui/AuthorizedPage'; 
