@@ -1,4 +1,5 @@
 import {ThemeToggle} from "../../features/ThemeToggle/ui/ThemeToggle.tsx";
+import {ASSETS} from "../../shared/config/assets";
 import type {FC} from "react";
 import {useNavigate} from "react-router-dom";
 
@@ -17,7 +18,7 @@ const UnauthorizedLayout:FC<UnauthorizedLayoutProps> = ({children}) => {
                 <div className="flex items-center space-x-2 cursor-pointer"
                      onClick={() => navigate('/')}>
                     <img
-                        src="/logo.jpg"
+                        src={ASSETS.logo}
                         alt="Pretty Pet Logo"
                         className="w-8 h-8 rounded-full object-cover"
                     />

@@ -1,4 +1,4 @@
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import type { FC } from 'react';
 
 interface RouterProviderProps {
@@ -6,10 +6,11 @@ interface RouterProviderProps {
 }
 
 const RouterProvider: FC<RouterProviderProps> = ({ children }) => {
+  // Используем HashRouter для GitHub Pages
   return (
-    <BrowserRouter>
+    <HashRouter>
       {children}
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
