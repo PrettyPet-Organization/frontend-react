@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../shared/lib/hooks/useAuth';
 import { ThemeToggle } from '../../../features/ThemeToggle/ui/ThemeToggle';
+import { ASSETS } from '../../../shared/config/assets';
 
 export const AuthorizedPage: React.FC = () => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ export const AuthorizedPage: React.FC = () => {
       <header className="flex justify-between items-center p-6">
         <div className="flex items-center space-x-2">
           <img 
-            src="/logo.jpg" 
+            src={ASSETS.logo}
             alt="Pretty Pet Logo" 
             className="w-8 h-8 rounded-full object-cover"
           />
