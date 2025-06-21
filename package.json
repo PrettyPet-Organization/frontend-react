@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
+  "homepage": "https://prettypet-organization.github.io/frontend-react/",
   "scripts": {
     "start": "vite",
     "build": "tsc -b && vite build",
