@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import UnauthorizedLayout from '../../../widgets/UnauthorizedLayout/UnauthorizedLayout';
+import {Button} from "antd";
 
 export const RegisterPage: React.FC = () => {
   const navigate = useNavigate();
@@ -18,22 +19,24 @@ export const RegisterPage: React.FC = () => {
               Страница регистрации (заглушка)
             </p>
             
-            <button 
+            <Button
               onClick={() => navigate('/login')}
-              className="w-full px-6 py-3 bg-theme-primary text-white rounded-lg hover:opacity-80 transition-opacity font-medium"
+              type='primary'
+              size='large'
+              className={'w-full'}
             >
               Перейти к входу
-            </button>
+            </Button>
           </div>
           
           <p className="mt-4 text-theme-text-secondary">
             Уже есть аккаунт?{' '}
-            <button 
+            <Button
               onClick={() => navigate('/login')}
-              className="text-theme-primary hover:underline"
+              type={'link'}
             >
               Войти
-            </button>
+            </Button>
           </p>
         </div>
       </main>

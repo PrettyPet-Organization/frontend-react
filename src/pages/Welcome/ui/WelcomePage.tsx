@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ASSETS } from '../../../shared/config/assets';
 import UnauthorizedLayout from "../../../widgets/UnauthorizedLayout/UnauthorizedLayout.tsx";
+import {Button} from "antd";
 
 export const WelcomePage: React.FC = () => {
   const navigate = useNavigate();
@@ -32,18 +33,22 @@ export const WelcomePage: React.FC = () => {
 
           {/* Кнопки действий */}
           <div className="flex flex-col sm:flex-row gap-4 animate-fade-in">
-            <button 
+            <Button
               onClick={() => navigate('/login')}
-              className="px-6 py-3 bg-theme-primary text-white rounded-lg hover:opacity-80 transition-opacity font-medium"
+              type='primary'
+              size='large'
+              // className="px-6 py-3 bg-theme-primary text-white rounded-lg hover:opacity-80 transition-opacity font-medium"
             >
               Войти в систему
-            </button>
-            <button 
+            </Button>
+            <Button
               onClick={() => navigate('/register')}
-              className="px-6 py-3 bg-theme-surface border border-theme-border text-theme-text rounded-lg hover:bg-theme-hover transition-colors font-medium"
+              type='default'
+              size='large'
+              // className="px-6 py-3 bg-theme-surface border border-theme-border text-theme-text rounded-lg hover:bg-theme-hover transition-colors font-medium"
             >
               Зарегистрироваться
-            </button>
+            </Button>
           </div>
 
           {/* Дополнительная информация */}
