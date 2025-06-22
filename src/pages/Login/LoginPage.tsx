@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../../shared/lib/hooks/useAuth';
-import UnauthorizedLayout from '../../../widgets/UnauthorizedLayout/UnauthorizedLayout';
 import {Button} from "antd";
+import UnauthorizedLayout from "../../widgets/UnauthorizedLayout/UnauthorizedLayout.tsx";
+import {useAuth} from "../../shared/lib/hooks/useAuth.ts";
 
 export const LoginPage: React.FC = () => {
   const navigate = useNavigate();

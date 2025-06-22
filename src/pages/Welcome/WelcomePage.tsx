@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ASSETS } from '../../../shared/config/assets';
-import UnauthorizedLayout from "../../../widgets/UnauthorizedLayout/UnauthorizedLayout.tsx";
 import {Button} from "antd";
+import UnauthorizedLayout from "../../widgets/UnauthorizedLayout/UnauthorizedLayout.tsx";
+import {ASSETS} from "../../shared/config/assets.ts";
 
 export const WelcomePage: React.FC = () => {
   const navigate = useNavigate();

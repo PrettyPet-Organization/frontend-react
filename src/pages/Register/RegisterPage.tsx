@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import UnauthorizedLayout from '../../../widgets/UnauthorizedLayout/UnauthorizedLayout';
 import {Button} from "antd";
+import UnauthorizedLayout from "../../widgets/UnauthorizedLayout/UnauthorizedLayout.tsx";
 
 export const RegisterPage: React.FC = () => {
   const navigate = useNavigate();
