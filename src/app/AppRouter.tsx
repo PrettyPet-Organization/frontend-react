@@ -1,9 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
-import {WelcomePage} from "../pages/Welcome";
-import {LoginPage} from "../pages/Login";
-import {RegisterPage} from "../pages/Register";
 import ProtectedRoute from "../shared/ui/ProtectedRoute.tsx";
-import { AuthorizedPage } from '../pages/Authorized/index.ts';
+import {WelcomePage} from "../pages/Welcome/WelcomePage.tsx";
+import {LoginPage} from "../pages/Login/LoginPage.tsx";
+import {RegisterPage} from "../pages/Register/RegisterPage.tsx";
+import {AuthorizedPage} from "../pages/Authorized/AuthorizedPage.tsx";
 
 export const AppRouter = () => {
   return (

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../../shared/lib/hooks/useAuth';
-import { ThemeToggle } from '../../../features/ThemeToggle/ui/ThemeToggle';
-import { ASSETS } from '../../../shared/config/assets';
+import {useAuth} from "../../shared/lib/hooks/useAuth.ts";
+import {ASSETS} from "../../shared/config/assets.ts";
+import {ThemeToggle} from "../../features/ThemeToggle/ui/ThemeToggle.tsx";
 
 export const AuthorizedPage: React.FC = () => {
   const navigate = useNavigate();
