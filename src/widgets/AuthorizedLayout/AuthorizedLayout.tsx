@@ -19,7 +19,7 @@ const AuthorizedLayout: FC<{ children: React.ReactNode }> = ({children}) => {
     return (
 
         <div className="flex h-screen w-full relative">
-            <div className="bg-theme-surface h-screen left-0 top-0 w-xs p-6 flex flex-col items-center justify-between" >
+            <div className="bg-theme-surface h-screen w-xs p  flex-col items-center justify-between py-12 px-12 sm:flex hidden" >
                 <div className="flex items-center space-x-2 cursor-pointer" onClick={() => navigate('/')}>
                     <img
                         src={ASSETS.logo}
