@@ -55,7 +55,6 @@ export const useTheme = () => {
     useSystemTheme,
   };
 };
-
 // Функция для применения темы к Ant Design
 const applyAntDesignTheme = (theme: ThemeType) => {
   const root = document.documentElement;

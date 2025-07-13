@@ -7,9 +7,23 @@ export interface User {
   email: string;
 }
 
+export interface RegisterData {
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword?: string;
+}
+
+export interface LoginData {
+  email: string;
+  password: string;
+}
+
 interface UserState {
   user: User | null;
   isAuthorized: boolean;
+  loading: boolean;
+  error: string | null;
 }
 
 const getInitialState = (): UserState => {
@@ -20,6 +34,8 @@ const getInitialState = (): UserState => {
   return {
     user,
     isAuthorized: !!user,
+    loading: false,
+    error: null,
   };
 };
 
@@ -29,28 +45,68 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
+    // Состояния загрузки
+    setLoading(state, action: PayloadAction<boolean>) {
+      state.loading = action.payload;
+    },
+    
+    // Обработка ошибок
+    setError(state, action: PayloadAction<string | null>) {
+      state.error = action.payload;
+      state.loading = false;
+    },
+    
+    // Успешная регистрация
+    registerSuccess(state, action: PayloadAction<User>) {
+      state.user = action.payload;
+      state.isAuthorized = true;
+      state.loading = false;
+      state.error = null;
+      localStorage.setItem('user', JSON.stringify(action.payload));
+    },
+    
+    // Устаревшие actions (для совместимости)
     setUser(state, action: PayloadAction<User>) {
       state.user = action.payload;
       state.isAuthorized = true;
+      state.error = null;
       localStorage.setItem('user', JSON.stringify(action.payload));
     },
+    
     clearUser(state) {
       state.user = null;
       state.isAuthorized = false;
+      state.error = null;
       localStorage.removeItem('user');
     },
+    
+    // Основные actions
     login(state, action: PayloadAction<User>) {
       state.user = action.payload;
       state.isAuthorized = true;
+      state.loading = false;
+      state.error = null;
       localStorage.setItem('user', JSON.stringify(action.payload));
     },
+    
     logout(state) {
       state.user = null;
       state.isAuthorized = false;
+      state.loading = false;
+      state.error = null;
       localStorage.removeItem('user');
     },
   },
 });
 
-export const { setUser, clearUser, login, logout } = userSlice.actions;
+export const { 
+  setLoading, 
+  setError, 
+  registerSuccess, 
+  setUser, 
+  clearUser, 
+  login, 
+  logout 
+} = userSlice.actions;
+
 export default userSlice.reducer; 
