@@ -11,7 +11,7 @@ export const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export const MOCK_USERS: User[] = [
   {
     id: '1',
-    name: 'Тестовый Пользователь',
+    name: 'Тест',
     email: 'test@example.com',
   }
 ]; 

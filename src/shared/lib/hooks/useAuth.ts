@@ -5,10 +5,13 @@ import {
   logout, 
   setLoading, 
   setError, 
-  registerSuccess 
-} from '../../../entities/User/model/userSlice';
-import { registerUser, loginUser as loginUserAPI } from '../../../entities/User/api/userAPI';
-import type { User, RegisterData, LoginData } from '../../../entities/User/model/userSlice';
+  registerSuccess,
+  registerUser,
+  loginUser as loginUserAPI,
+  type LoginData,
+  type RegisterData,
+  type User
+} from '../../../entities/User';
 
 export const useAuth = () => {
   const dispatch = useDispatch();

@@ -65,21 +65,6 @@ const userSlice = createSlice({
       localStorage.setItem('user', JSON.stringify(action.payload));
     },
     
-    // Устаревшие actions (для совместимости)
-    setUser(state, action: PayloadAction<User>) {
-      state.user = action.payload;
-      state.isAuthorized = true;
-      state.error = null;
-      localStorage.setItem('user', JSON.stringify(action.payload));
-    },
-    
-    clearUser(state) {
-      state.user = null;
-      state.isAuthorized = false;
-      state.error = null;
-      localStorage.removeItem('user');
-    },
-    
     // Основные actions
     login(state, action: PayloadAction<User>) {
       state.user = action.payload;
@@ -103,8 +88,6 @@ export const {
   setLoading, 
   setError, 
   registerSuccess, 
-  setUser, 
-  clearUser, 
   login, 
   logout 
 } = userSlice.actions;

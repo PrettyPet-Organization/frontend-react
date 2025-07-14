@@ -3,10 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { Form, Button, Typography } from "antd";
 import { useAuth } from "../../shared/lib/hooks/useAuth";
 import { AuthForm } from "../../shared/ui/AuthForm";
-import type { RegisterData } from "../../entities/User/model/userSlice";
+import type { RegisterData } from "../../entities/User";
 import UnauthorizedLayout from "../../widgets/UnauthorizedLayout/UnauthorizedLayout";
-import { REGISTER_TEXTS } from "../../features/RegisterUser/model/constants";
-import { REGISTER_FORM_CONFIG } from "../../features/RegisterUser/model/config";
+import { REGISTER_FORM_CONFIG, REGISTER_TEXTS } from "../../features/RegisterUser";
 
 const { Title, Text } = Typography;
 

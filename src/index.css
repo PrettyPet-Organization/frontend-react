@@ -26,23 +26,23 @@
 
 /* Темная тема */
 .dark {
-  --color-primary: #ff9456;
+  --color-primary: #ef823d;
   --color-text: #ffffff;
-  --color-bg: #0d1117;
-  --color-surface: #161b22;
-  --color-surface-variant: #21262d;
-  --color-text-primary: #f0f6fc;
-  --color-text-secondary: #7d8590;
-  --color-text-tertiary: #6e7681;
-  --color-border: #30363d;
-  --color-border-variant: #21262d;
-  --color-hover: #21262d;
-  --color-active: #262c36;
-  --color-disabled: #161b22;
-  --color-success: #238636;
-  --color-warning: #d29922;
-  --color-error: #da3633;
-  --color-info: #1f6feb;
+  --color-bg: #121212;
+  --color-surface: #1e1e1e;
+  --color-surface-variant: #2d2d2d;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #b0b0b0;
+  --color-text-tertiary: gray;
+  --color-border: #404040;
+  --color-border-variant: #525252;
+  --color-hover: #2d2d2d;
+  --color-active: #404040;
+  --color-disabled: #1e1e1e;
+  --color-success: #4caf50;
+  --color-warning: #ff9800;
+  --color-error: #f44336;
+  --color-info: #2196f3;
   --color-shadow: rgba(0, 0, 0, 0.6);
   --color-shadow-variant: rgba(0, 0, 0, 0.4);
 }
@@ -58,16 +58,15 @@ body {
 
 /* Стили для Ant Design компонентов */
 .ant-btn-primary {
-  background-color: var(--color-primary) !important;
-  border-color: var(--color-primary) !important;
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
 }
 
 .ant-btn-primary:hover {
-  background-color: var(--color-primary) !important;
+  background-color: var(--color-primary);
   opacity: 0.8;
 }
 
-/* Кастомные классы для использования в компонентах */
 .text-theme-primary {
   color: var(--color-primary);
 }
@@ -122,28 +121,8 @@ body {
 }
 
 
-/* Исправление стилей автозаполнения */
-/* Webkit браузеры (Chrome, Safari, Edge) */
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active,
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus,
-textarea:-webkit-autofill:active,
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus,
-select:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px var(--color-bg) inset !important;
-  -webkit-text-fill-color: var(--color-text-primary) !important;
-  border-color: var(--color-border) !important;
-  caret-color: var(--color-text-primary) !important;
-  transition: background-color 5000s ease-in-out 0s;
-}
-
-/* Для Ant Design Input компонентов */
+/* Исправление стилей автозаполнения для инпутов */
+/* Усиленная специфичность для Ant Design */
 .ant-input:-webkit-autofill,
 .ant-input:-webkit-autofill:hover,
 .ant-input:-webkit-autofill:focus,
@@ -151,32 +130,17 @@ select:-webkit-autofill:active {
 .ant-input-password-input:-webkit-autofill,
 .ant-input-password-input:-webkit-autofill:hover,
 .ant-input-password-input:-webkit-autofill:focus,
-.ant-input-password-input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px var(--color-bg) inset !important;
+.ant-input-password-input:-webkit-autofill:active,
+.ant-form-item .ant-input:-webkit-autofill,
+.ant-form-item .ant-input-password-input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px var(--color-surface) inset !important;
   -webkit-text-fill-color: var(--color-text-primary) !important;
   border-color: var(--color-border) !important;
   caret-color: var(--color-text-primary) !important;
-  transition: background-color 5000s ease-in-out 0s;
+  background-color: var(--color-surface) !important;
 }
 
-/* Firefox поддержка автозаполнения */
-input:-moz-autofill,
-textarea:-moz-autofill,
-select:-moz-autofill {
-  background-color: var(--color-bg) !important;
-  color: var(--color-text-primary) !important;
-  border-color: var(--color-border) !important;
-}
-
-/* Для темной темы - специфичные стили автозаполнения */
-.dark input:-webkit-autofill,
-.dark input:-webkit-autofill:hover,
-.dark input:-webkit-autofill:focus,
-.dark input:-webkit-autofill:active,
-.dark textarea:-webkit-autofill,
-.dark textarea:-webkit-autofill:hover,
-.dark textarea:-webkit-autofill:focus,
-.dark textarea:-webkit-autofill:active,
+/* Специальные стили для темной темы */
 .dark .ant-input:-webkit-autofill,
 .dark .ant-input:-webkit-autofill:hover,
 .dark .ant-input:-webkit-autofill:focus,
@@ -184,9 +148,12 @@ select:-moz-autofill {
 .dark .ant-input-password-input:-webkit-autofill,
 .dark .ant-input-password-input:-webkit-autofill:hover,
 .dark .ant-input-password-input:-webkit-autofill:focus,
-.dark .ant-input-password-input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px var(--color-bg) inset !important;
+.dark .ant-input-password-input:-webkit-autofill:active,
+.dark .ant-form-item .ant-input:-webkit-autofill,
+.dark .ant-form-item .ant-input-password-input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px var(--color-surface) inset !important;
   -webkit-text-fill-color: var(--color-text-primary) !important;
   border-color: var(--color-border) !important;
   caret-color: var(--color-text-primary) !important;
+  background-color: var(--color-surface) !important;
 }
