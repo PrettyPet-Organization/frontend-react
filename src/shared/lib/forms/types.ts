@@ -1,5 +1,6 @@
 import type { Rule } from 'antd/es/form';
 import type { FormInstance } from 'antd/es/form';
+import type { ComponentType } from 'react';
 
 // Базовые типы для полей формы
 export type FieldType = 'text' | 'email' | 'password';
@@ -11,7 +12,7 @@ export interface FormFieldConfig {
   type: FieldType;
   placeholder: string;
   rules: Rule[];
-  iconComponent?: React.ComponentType;
+  iconComponent?: ComponentType;
   dependencies?: string[];
   autoComplete?: string;
 }

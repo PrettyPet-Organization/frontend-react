@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { Form, Button, Typography } from "antd";
 import { useAuth } from "../../shared/lib/hooks/useAuth";
 import { AuthForm } from "../../shared/ui/AuthForm";
-import { LOGIN_FORM_CONFIG, AUTH_TEXTS } from "../../features/Auth";
 import type { LoginData } from "../../entities/User/model/userSlice";
 import UnauthorizedLayout from "../../widgets/UnauthorizedLayout/UnauthorizedLayout";
+import { LOGIN_FORM_CONFIG } from "../../features/AuthByEmail/model/config";
+import { LOGIN_TEXTS } from "../../features/AuthByEmail/model/constants";
 
 const { Title, Text } = Typography;
 
@@ -51,10 +52,10 @@ export const LoginPage: React.FC = () => {
         <div className='max-w-md w-full'>
           <div className='text-center mb-8'>
             <Title level={2} className='!text-theme-text !mb-2'>
-              {AUTH_TEXTS.LOGIN.TITLE}
+              {LOGIN_TEXTS.TITLE}
             </Title>
             <Text type='secondary' className='text-theme-text-secondary'>
-              {AUTH_TEXTS.LOGIN.SUBTITLE}
+              {LOGIN_TEXTS.SUBTITLE}
             </Text>
           </div>
 
@@ -66,21 +67,21 @@ export const LoginPage: React.FC = () => {
               loading={loading}
               error={error}
               onErrorClose={clearError}
-              submitButtonText={AUTH_TEXTS.LOGIN.SUBMIT_BUTTON}
-              loadingText={AUTH_TEXTS.LOGIN.SUBMIT_LOADING}
+              submitButtonText={LOGIN_TEXTS.SUBMIT_BUTTON}
+              loadingText={LOGIN_TEXTS.SUBMIT_LOADING}
               form={form}
             />
           </div>
 
           <div className='text-center mt-6'>
             <Text type='secondary' className='text-theme-text-secondary'>
-              {AUTH_TEXTS.LOGIN.NO_ACCOUNT}{" "}
+              {LOGIN_TEXTS.NO_ACCOUNT}{" "}
               <Button
                 type='link'
                 onClick={() => navigate("/register")}
                 className='!text-theme-primary hover:!opacity-80 !p-0'
               >
-                {AUTH_TEXTS.LOGIN.REGISTER_LINK}
+                {LOGIN_TEXTS.REGISTER_LINK}
               </Button>
             </Text>
           </div>

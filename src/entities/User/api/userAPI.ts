@@ -1,7 +1,5 @@
 import type { User, RegisterData, LoginData } from '../model/userSlice';
-
-// Имитация API запросов
-const API_DELAY = 1000; // 1 секунда задержки для имитации
+import { API_DELAY, EMAIL_CHECK_DELAY, EMAIL_REGEX, MOCK_USERS } from '../model/constants';
 
 // Интерфейсы для API ответов
 interface ApiResponse<T> {
@@ -15,14 +13,6 @@ interface ApiError {
   code?: string;
 }
 
-// Имитация базы данных пользователей
-const mockUsers: User[] = [
-  {
-    id: '1',
-    name: 'Тестовый Пользователь',
-    email: 'test@example.com',
-  }
-];
 
 // Утилита для имитации задержки
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
@@ -32,8 +22,7 @@ const generateId = () => Date.now().toString();
 
 // Валидация email
 const isValidEmail = (email: string): boolean => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
+  return EMAIL_REGEX.test(email);
 };
 
 // API для регистрации
@@ -58,7 +47,7 @@ export const registerUser = async (registerData: RegisterData): Promise<ApiRespo
   }
   
   // Проверка на существование пользователя
-  const existingUser = mockUsers.find(user => user.email === registerData.email);
+  const existingUser = MOCK_USERS.find((user: User) => user.email === registerData.email);
   if (existingUser) {
     throw new Error('Пользователь с таким email уже существует');
   }
@@ -71,7 +60,7 @@ export const registerUser = async (registerData: RegisterData): Promise<ApiRespo
   };
   
   // Добавление в "базу данных"
-  mockUsers.push(newUser);
+  MOCK_USERS.push(newUser);
   
   return {
     data: newUser,
@@ -94,7 +83,7 @@ export const loginUser = async (loginData: LoginData): Promise<ApiResponse<User>
   }
   
   // Поиск пользователя
-  const user = mockUsers.find(u => u.email === loginData.email);
+  const user = MOCK_USERS.find((u: User) => u.email === loginData.email);
   if (!user) {
     throw new Error('Пользователь не найден');
   }
@@ -111,13 +100,13 @@ export const loginUser = async (loginData: LoginData): Promise<ApiResponse<User>
 
 // API для проверки доступности email
 export const checkEmailAvailability = async (email: string): Promise<boolean> => {
-  await delay(500); // Меньшая задержка для проверки
+  await delay(EMAIL_CHECK_DELAY); // Меньшая задержка для проверки
   
   if (!isValidEmail(email)) {
     return false;
   }
   
-  const existingUser = mockUsers.find(user => user.email === email);
+  const existingUser = MOCK_USERS.find((user: User) => user.email === email);
   return !existingUser;
 };
 

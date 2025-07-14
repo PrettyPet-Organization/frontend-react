@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { Form, Button, Typography } from "antd";
 import { useAuth } from "../../shared/lib/hooks/useAuth";
 import { AuthForm } from "../../shared/ui/AuthForm";
-import { REGISTER_FORM_CONFIG, AUTH_TEXTS } from "../../features/Auth";
 import type { RegisterData } from "../../entities/User/model/userSlice";
 import UnauthorizedLayout from "../../widgets/UnauthorizedLayout/UnauthorizedLayout";
+import { REGISTER_TEXTS } from "../../features/RegisterUser/model/constants";
+import { REGISTER_FORM_CONFIG } from "../../features/RegisterUser/model/config";
 
 const { Title, Text } = Typography;
 
@@ -51,10 +52,10 @@ export const RegisterPage: React.FC = () => {
         <div className='max-w-md w-full'>
           <div className='text-center mb-8'>
             <Title level={2} className='!text-theme-text !mb-2'>
-              {AUTH_TEXTS.REGISTER.TITLE}
+              {REGISTER_TEXTS.TITLE}
             </Title>
             <Text type='secondary' className='text-theme-text-secondary'>
-              {AUTH_TEXTS.REGISTER.SUBTITLE}
+              {REGISTER_TEXTS.SUBTITLE}
             </Text>
           </div>
 
@@ -66,21 +67,21 @@ export const RegisterPage: React.FC = () => {
               loading={loading}
               error={error}
               onErrorClose={clearError}
-              submitButtonText={AUTH_TEXTS.REGISTER.SUBMIT_BUTTON}
-              loadingText={AUTH_TEXTS.REGISTER.SUBMIT_LOADING}
+              submitButtonText={REGISTER_TEXTS.SUBMIT_BUTTON}
+              loadingText={REGISTER_TEXTS.SUBMIT_LOADING}
               form={form}
             />
           </div>
 
           <div className='text-center mt-6'>
             <Text type='secondary' className='text-theme-text-secondary'>
-              {AUTH_TEXTS.REGISTER.ALREADY_HAVE_ACCOUNT}{" "}
+              {REGISTER_TEXTS.ALREADY_HAVE_ACCOUNT}{" "}
               <Button
                 type='link'
                 onClick={() => navigate("/login")}
                 className='!text-theme-primary hover:!opacity-80 !p-0'
               >
-                {AUTH_TEXTS.REGISTER.LOGIN_LINK}
+                {REGISTER_TEXTS.LOGIN_LINK}
               </Button>
             </Text>
           </div>
