@@ -1,5 +1,5 @@
-import type { User, RegisterData, LoginData } from '../model/userSlice';
-import { API_DELAY, EMAIL_CHECK_DELAY, EMAIL_REGEX, MOCK_USERS } from '../model/constants';
+import type { User, RegisterData, LoginData } from "../model/userSlice";
+import { EMAIL_REGEX, MOCK_USERS } from "../model/constants";
 
 // Интерфейсы для API ответов
 interface ApiResponse<T> {
@@ -13,10 +13,6 @@ interface ApiError {
   code?: string;
 }
 
-
-// Утилита для имитации задержки
-const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
-
 // Утилита для генерации ID
 const generateId = () => Date.now().toString();
 
@@ -27,88 +23,75 @@ const isValidEmail = (email: string): boolean => {
 
 // API для регистрации
 export const registerUser = async (registerData: RegisterData): Promise<ApiResponse<User>> => {
-  await delay(API_DELAY);
-  
   // Валидация данных
-  if (!registerData.name || registerData.name.length < 2) {
-    throw new Error('Имя должно содержать минимум 2 символа');
-  }
-  
   if (!registerData.email || !isValidEmail(registerData.email)) {
-    throw new Error('Введите корректный email');
+    throw new Error("Введите корректный email");
   }
-  
+
   if (!registerData.password || registerData.password.length < 6) {
-    throw new Error('Пароль должен содержать минимум 6 символов');
+    throw new Error("Пароль должен содержать минимум 6 символов");
   }
-  
+
   if (registerData.confirmPassword && registerData.password !== registerData.confirmPassword) {
-    throw new Error('Пароли не совпадают');
+    throw new Error("Пароли не совпадают");
   }
-  
+
   // Проверка на существование пользователя
   const existingUser = MOCK_USERS.find((user: User) => user.email === registerData.email);
   if (existingUser) {
-    throw new Error('Пользователь с таким email уже существует');
+    throw new Error("Пользователь с таким email уже существует");
   }
-  
+
   // Создание нового пользователя
   const newUser: User = {
     id: generateId(),
-    name: registerData.name,
     email: registerData.email,
   };
-  
+
   // Добавление в "базу данных"
   MOCK_USERS.push(newUser);
-  
+
   return {
     data: newUser,
-    message: 'Регистрация прошла успешно',
+    message: "Регистрация прошла успешно",
     success: true,
   };
 };
 
 // API для входа
 export const loginUser = async (loginData: LoginData): Promise<ApiResponse<User>> => {
-  await delay(API_DELAY);
-  
   // Валидация данных
   if (!loginData.email || !isValidEmail(loginData.email)) {
-    throw new Error('Введите корректный email');
+    throw new Error("Введите корректный email");
   }
-  
+
   if (!loginData.password) {
-    throw new Error('Введите пароль');
+    throw new Error("Введите пароль");
   }
-  
+
   // Поиск пользователя
   const user = MOCK_USERS.find((u: User) => u.email === loginData.email);
   if (!user) {
-    throw new Error('Пользователь не найден');
+    throw new Error("Пользователь не найден");
   }
-  
-  // В реальном приложении здесь была бы проверка пароля
-  // Для демонстрации принимаем любой пароль
-  
+
   return {
     data: user,
-    message: 'Вход выполнен успешно',
+    message: "Вход выполнен успешно",
     success: true,
   };
 };
 
 // API для проверки доступности email
 export const checkEmailAvailability = async (email: string): Promise<boolean> => {
-  await delay(EMAIL_CHECK_DELAY); // Меньшая задержка для проверки
-  
+
   if (!isValidEmail(email)) {
     return false;
   }
-  
+
   const existingUser = MOCK_USERS.find((user: User) => user.email === email);
   return !existingUser;
 };
 
 // Экспорт типов для использования в компонентах
-export type { ApiResponse, ApiError }; 
+export type { ApiResponse, ApiError };

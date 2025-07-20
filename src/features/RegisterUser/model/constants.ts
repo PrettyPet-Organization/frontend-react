@@ -12,11 +12,6 @@ export const REGISTER_TEXTS = {
 
 // Сообщения для регистрации
 export const REGISTER_MESSAGES = {
-  NAME: {
-    REQUIRED: "Введите ваше имя",
-    MIN_LENGTH: `Имя должно содержать минимум ${AUTH_VALIDATION.NAME.MIN_LENGTH} символа`,
-    MAX_LENGTH: `Имя не должно превышать ${AUTH_VALIDATION.NAME.MAX_LENGTH} символов`,
-  },
   EMAIL: AUTH_MESSAGES.EMAIL,
   PASSWORD: {
     REQUIRED: AUTH_MESSAGES.PASSWORD.REQUIRED,
