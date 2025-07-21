@@ -1,4 +1,4 @@
-import React, {type FC} from 'react';
+import React, {type FC, useState} from 'react';
 import {useAuth} from "../../shared/lib/hooks/useAuth.ts";
 import {useNavigate} from "react-router-dom";
 import {Button} from 'antd';
@@ -10,6 +10,7 @@ const AuthorizedLayout: FC<{ children: React.ReactNode }> = ({children}) => {
 
     const {user, logoutUser} = useAuth();
     const navigate = useNavigate();
+    const [shown, setShown] = useState(false);
 
     const handleLogout = () => {
         logoutUser();
@@ -38,6 +39,17 @@ const AuthorizedLayout: FC<{ children: React.ReactNode }> = ({children}) => {
                         Выйти
                     </Button>
                 </div>
+            </div>
+            <button onClick={()=> setShown(!shown)}>
+                Переключатель
+            </button>
+            <div onClick={()=> setShown(!shown)} className={`
+      bg-theme-surface h-screen w-screen flex flex-col items-center justify-center sm:hidden absolute
+      transition-transform duration-300
+      ${shown ? 'translate-x-0' : 'translate-x-full'}
+    `}
+            >
+                <AuthorizedNavBar/>
             </div>
             <div className="flex-1 h-screen">
                 <div className="min-h-screen bg-gradient-to-br from-theme-bg to-theme-surface flex flex-col">
