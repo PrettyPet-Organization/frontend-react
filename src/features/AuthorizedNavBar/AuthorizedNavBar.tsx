@@ -25,7 +25,7 @@ const AuthorizedNavBar: FC = () => {
     ]
     
     return (
-        <div className="flex flex-col gap-3 align-baseline w-full">
+        <div className="flex flex-1 flex-col gap-3 align-baseline w-full">
             {authorizedRoutList.map((item, i) => (
                 <p className="cursor-pointer" key={i} onClick={() => { navigate(item.link) }}>
                     {item.name}

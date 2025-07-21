@@ -19,7 +19,8 @@ const AuthorizedLayout: FC<{ children: React.ReactNode }> = ({children}) => {
     return (
 
         <div className="flex h-screen w-full relative">
-            <div className="bg-theme-surface h-screen w-xs p  flex-col items-center justify-between py-12 px-12 sm:flex hidden" >
+            <div
+                className="bg-theme-surface h-screen w-xs p gap-24 flex-col items-center justify-between py-6 px-12 sm:flex hidden">
                 <div className="flex items-center space-x-2 cursor-pointer" onClick={() => navigate('/')}>
                     <img
                         src={ASSETS.logo}
@@ -41,14 +42,14 @@ const AuthorizedLayout: FC<{ children: React.ReactNode }> = ({children}) => {
             <div className="flex-1 h-screen">
                 <div className="min-h-screen bg-gradient-to-br from-theme-bg to-theme-surface flex flex-col">
                     <header className="flex justify-between items-center p-6">
-                      
+
                         <div className="flex items-center space-x-4">
           <span className="text-theme-text-secondary">
             Привет, {user?.name}!
           </span>
-                           
+
                         </div>
-                    <ThemeToggle/>
+                        <ThemeToggle/>
                     </header>
 
                     {/* Основной контент */}
@@ -61,7 +62,7 @@ const AuthorizedLayout: FC<{ children: React.ReactNode }> = ({children}) => {
                     </footer>
                 </div>
             </div>
-           
+
         </div>
     );
 };
