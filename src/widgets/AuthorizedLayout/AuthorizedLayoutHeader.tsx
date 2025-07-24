@@ -11,7 +11,7 @@ const AuthorizedLayoutHeader = () => {
 
             <div className="flex items-center space-x-4">
           <span className="text-theme-text-secondary">
-            Привет, {user?.name}!
+            Привет, {user?.email}!
           </span>
 
             </div>
