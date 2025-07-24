@@ -56,7 +56,7 @@ export const ThemeToggle: React.FC = () => {
         type="text"
         icon={currentTheme === 'dark' ? <MoonOutlined /> : <SunOutlined />}
         onClick={toggleCurrentTheme}
-        className="theme-toggle-btn hover:bg-theme-hover transition-colors"
+        className="btn hover:bg-theme-hover transition-colors"
         size="large"
       />
     </Dropdown>
