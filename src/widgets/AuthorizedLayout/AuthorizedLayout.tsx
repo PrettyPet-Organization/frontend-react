@@ -1,70 +1,19 @@
-import React, {type FC, useState} from 'react';
-import {useAuth} from "../../shared/lib/hooks/useAuth.ts";
-import {useNavigate} from "react-router-dom";
-import {Button} from 'antd';
-import {ASSETS} from "../../shared/config/assets.ts";
-import {ThemeToggle} from '../../features/ThemeToggle/ui/ThemeToggle.tsx';
-import AuthorizedNavBar from "../../features/AuthorizedNavBar/AuthorizedNavBar.tsx";
+import React, {type FC} from 'react';
+import AuthorizedLayoutMobileMenu from "./AuthorizedLayoutMobileMenu.tsx";
+import AuthorizedLayoutHeader from "./AuthorizedLayoutHeader.tsx";
+import AuthorizedLayoutDesktopMenu from "./AuthorizedLayoutDesktopMenu.tsx";
 
 const AuthorizedLayout: FC<{ children: React.ReactNode }> = ({children}) => {
 
-    const {user, logoutUser} = useAuth();
-    const navigate = useNavigate();
-    const [shown, setShown] = useState(false);
-
-    const handleLogout = () => {
-        logoutUser();
-        navigate('/');
-    };
 
     return (
-
-        <div className="flex h-screen w-full relative">
-            <div
-                className="bg-theme-surface h-screen w-xs p gap-24 flex-col items-center justify-between py-6 px-12 sm:flex hidden">
-                <div className="flex items-center space-x-2 cursor-pointer" onClick={() => navigate('/')}>
-                    <img
-                        src={ASSETS.logo}
-                        alt="Pretty Pet Logo"
-                        className="w-8 h-8 rounded-full object-cover"
-                    />
-                    <span className="text-xl font-semibold text-theme-text">Pretty Pet</span>
-                </div>
-                <AuthorizedNavBar/>
-                <div>
-                    <Button
-                        onClick={handleLogout}
-                        type="default"
-                    >
-                        Выйти
-                    </Button>
-                </div>
-            </div>
-            <button onClick={()=> setShown(!shown)}>
-                Переключатель
-            </button>
-            <div onClick={()=> setShown(!shown)} className={`
-      bg-theme-surface h-screen w-screen flex flex-col items-center justify-center sm:hidden absolute
-      transition-transform duration-300
-      ${shown ? 'translate-x-0' : 'translate-x-full'}
-    `}
-            >
-                <AuthorizedNavBar/>
-            </div>
+        <div className="flex h-screen w-full relative overflow-hidden">
+            <AuthorizedLayoutDesktopMenu/>
+            <AuthorizedLayoutMobileMenu/>
             <div className="flex-1 h-screen">
                 <div className="min-h-screen bg-gradient-to-br from-theme-bg to-theme-surface flex flex-col">
-                    <header className="flex justify-between items-center p-6">
+                    <AuthorizedLayoutHeader/>
 
-                        <div className="flex items-center space-x-4">
-          <span className="text-theme-text-secondary">
-            Привет, {user?.name}!
-          </span>
-
-                        </div>
-                        <ThemeToggle/>
-                    </header>
-
-                    {/* Основной контент */}
                     <main className="flex-1 flex">
                         {children}
                     </main>
