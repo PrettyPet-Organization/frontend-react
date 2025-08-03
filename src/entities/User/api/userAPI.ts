@@ -1,5 +1,5 @@
 import type { User, RegisterData, LoginData } from "../model/userSlice";
-import { EMAIL_REGEX, MOCK_USERS } from "../model/constants";
+import { ValidationUtils, MOCK_USERS, MIN_PASSWORD_LENGTH } from "../model/constants";
 
 // Интерфейсы для API ответов
 interface ApiResponse<T> {
@@ -16,23 +16,21 @@ interface ApiError {
 // Утилита для генерации ID
 const generateId = () => Date.now().toString();
 
-// Валидация email
-const isValidEmail = (email: string): boolean => {
-  return EMAIL_REGEX.test(email);
-};
-
 // API для регистрации
 export const registerUser = async (registerData: RegisterData): Promise<ApiResponse<User>> => {
   // Валидация данных
-  if (!registerData.email || !isValidEmail(registerData.email)) {
+  if (!ValidationUtils.isValidEmail(registerData.email)) {
     throw new Error("Введите корректный email");
   }
 
-  if (!registerData.password || registerData.password.length < 6) {
-    throw new Error("Пароль должен содержать минимум 6 символов");
+  if (!ValidationUtils.isValidPassword(registerData.password)) {
+    throw new Error(`Пароль должен содержать минимум ${MIN_PASSWORD_LENGTH} символов`);
   }
 
-  if (registerData.confirmPassword && registerData.password !== registerData.confirmPassword) {
+  if (
+    registerData.confirmPassword &&
+    !ValidationUtils.arePasswordsMatching(registerData.password, registerData.confirmPassword)
+  ) {
     throw new Error("Пароли не совпадают");
   }
 
@@ -61,11 +59,11 @@ export const registerUser = async (registerData: RegisterData): Promise<ApiRespo
 // API для входа
 export const loginUser = async (loginData: LoginData): Promise<ApiResponse<User>> => {
   // Валидация данных
-  if (!loginData.email || !isValidEmail(loginData.email)) {
+  if (!ValidationUtils.isValidEmail(loginData.email)) {
     throw new Error("Введите корректный email");
   }
 
-  if (!loginData.password) {
+  if (!ValidationUtils.isRequired(loginData.password)) {
     throw new Error("Введите пароль");
   }
 
@@ -84,8 +82,7 @@ export const loginUser = async (loginData: LoginData): Promise<ApiResponse<User>
 
 // API для проверки доступности email
 export const checkEmailAvailability = async (email: string): Promise<boolean> => {
-
-  if (!isValidEmail(email)) {
+  if (!ValidationUtils.isValidEmail(email)) {
     return false;
   }
 

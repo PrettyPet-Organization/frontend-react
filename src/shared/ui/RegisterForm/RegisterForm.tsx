@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Input, Button, Alert } from "antd";
 import { MailOutlined, LockOutlined, EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import type { RegisterData } from "../../../entities/User";
+import { ValidationUtils, MIN_PASSWORD_LENGTH } from "../../../entities/User";
 
 interface RegisterFormProps {
   onSubmit: (values: RegisterData) => Promise<void>;
@@ -19,6 +20,28 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
   onFieldsChange,
 }) => {
   const [form] = Form.useForm();
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
+
+  // Отслеживаем изменения полей и обновляем состояние кнопки
+  const handleFieldsChange = () => {
+    // Проверяем, что все обязательные поля заполнены и нет ошибок валидации
+    const fieldsError = form.getFieldsError();
+    const hasErrors = fieldsError.some(({ errors }) => errors.length > 0);
+
+    const fieldsValue = form.getFieldsValue();
+    const hasRequiredFields =
+      fieldsValue.email && fieldsValue.password && fieldsValue.confirmPassword;
+
+    // Проверяем, что поля были затронуты пользователем
+    const touchedFields = form.isFieldsTouched(["email", "password", "confirmPassword"], true);
+
+    setIsSubmitDisabled(!hasRequiredFields || hasErrors || !touchedFields);
+
+    // Вызываем переданный обработчик, если есть
+    if (onFieldsChange) {
+      onFieldsChange();
+    }
+  };
 
   return (
     <>
@@ -37,7 +60,7 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
         form={form}
         layout='vertical'
         onFinish={onSubmit}
-        onFieldsChange={onFieldsChange}
+        onFieldsChange={handleFieldsChange}
         disabled={loading}
         size='large'
       >
@@ -46,7 +69,14 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
           label='Email'
           rules={[
             { required: true, message: "Введите email" },
-            { type: "email", message: "Введите корректный email" },
+            {
+              validator: (_, value) => {
+                if (!value || ValidationUtils.isValidEmail(value)) {
+                  return Promise.resolve();
+                }
+                return Promise.reject(new Error("Введите корректный email"));
+              },
+            },
           ]}
         >
           <Input
@@ -62,7 +92,16 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
           label='Пароль'
           rules={[
             { required: true, message: "Введите пароль" },
-            { min: 6, message: "Пароль должен содержать минимум 6 символов" },
+            {
+              validator: (_, value) => {
+                if (!value || ValidationUtils.isValidPassword(value)) {
+                  return Promise.resolve();
+                }
+                return Promise.reject(
+                  new Error(`Пароль должен содержать минимум ${MIN_PASSWORD_LENGTH} символов`)
+                );
+              },
+            },
           ]}
         >
           <Input.Password
@@ -79,14 +118,15 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
           dependencies={["password"]}
           rules={[
             { required: true, message: "Подтвердите пароль" },
-            ({ getFieldValue }) => ({
-              validator(_, value) {
-                if (!value || getFieldValue("password") === value) {
+            {
+              validator: (_, value) => {
+                const password = form.getFieldValue("password");
+                if (!value || ValidationUtils.arePasswordsMatching(password, value)) {
                   return Promise.resolve();
                 }
                 return Promise.reject(new Error("Пароли не совпадают"));
               },
-            }),
+            },
           ]}
         >
           <Input.Password
@@ -102,6 +142,7 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
             type='primary'
             htmlType='submit'
             loading={loading}
+            disabled={isSubmitDisabled || loading}
             size='large'
             className='w-full'
           >

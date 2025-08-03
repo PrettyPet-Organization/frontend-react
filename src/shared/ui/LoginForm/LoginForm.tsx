@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Input, Button, Alert } from "antd";
 import { MailOutlined, LockOutlined, EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import type { LoginData } from "../../../entities/User";
+import { ValidationUtils } from "../../../entities/User";
 
 interface LoginFormProps {
   onSubmit: (values: LoginData) => Promise<void>;
@@ -19,6 +20,27 @@ export const LoginForm: React.FC<LoginFormProps> = ({
   onFieldsChange,
 }) => {
   const [form] = Form.useForm();
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
+
+  // Отслеживаем изменения полей и обновляем состояние кнопки
+  const handleFieldsChange = () => {
+    // Проверяем, что все обязательные поля заполнены и нет ошибок валидации
+    const fieldsError = form.getFieldsError();
+    const hasErrors = fieldsError.some(({ errors }) => errors.length > 0);
+
+    const fieldsValue = form.getFieldsValue();
+    const hasRequiredFields = fieldsValue.email && fieldsValue.password;
+
+    // Проверяем, что поля были затронуты пользователем
+    const touchedFields = form.isFieldsTouched(["email", "password"], true);
+
+    setIsSubmitDisabled(!hasRequiredFields || hasErrors || !touchedFields);
+
+    // Вызываем переданный обработчик, если есть
+    if (onFieldsChange) {
+      onFieldsChange();
+    }
+  };
 
   return (
     <>
@@ -37,7 +59,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
         form={form}
         layout='vertical'
         onFinish={onSubmit}
-        onFieldsChange={onFieldsChange}
+        onFieldsChange={handleFieldsChange}
         disabled={loading}
         size='large'
       >
@@ -46,7 +68,14 @@ export const LoginForm: React.FC<LoginFormProps> = ({
           label='Email'
           rules={[
             { required: true, message: "Введите email" },
-            { type: "email", message: "Введите корректный email" },
+            {
+              validator: (_, value) => {
+                if (!value || ValidationUtils.isValidEmail(value)) {
+                  return Promise.resolve();
+                }
+                return Promise.reject(new Error("Введите корректный email"));
+              },
+            },
           ]}
         >
           <Input
@@ -60,7 +89,16 @@ export const LoginForm: React.FC<LoginFormProps> = ({
         <Form.Item
           name='password'
           label='Пароль'
-          rules={[{ required: true, message: "Введите пароль" }]}
+          rules={[
+            {
+              validator: (_, value) => {
+                if (!value || !ValidationUtils.isRequired(value)) {
+                  return Promise.reject(new Error("Введите пароль"));
+                }
+                return Promise.resolve();
+              },
+            },
+          ]}
         >
           <Input.Password
             prefix={<LockOutlined />}
@@ -75,6 +113,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
             type='primary'
             htmlType='submit'
             loading={loading}
+            disabled={isSubmitDisabled || loading}
             size='large'
             className='w-full'
           >
