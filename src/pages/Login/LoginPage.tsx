@@ -1,18 +1,16 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Form, Button, Typography } from "antd";
+import { Button, Typography } from "antd";
 import { useAuth } from "../../shared/lib/hooks/useAuth";
-import { AuthForm } from "../../shared/ui/AuthForm";
+import { LoginForm } from "../../shared/ui/LoginForm";
 import type { LoginData } from "../../entities/User";
 import UnauthorizedLayout from "../../widgets/UnauthorizedLayout/UnauthorizedLayout";
-import { LOGIN_FORM_CONFIG, LOGIN_TEXTS } from "../../features/AuthByEmail";
 
 const { Title, Text } = Typography;
 
 export const LoginPage: React.FC = () => {
   const navigate = useNavigate();
   const { loginUserAsync, loading, error, clearError, isAuthorized } = useAuth();
-  const [form] = Form.useForm();
 
   // Перенаправление если пользователь уже авторизован
   useEffect(() => {
@@ -51,36 +49,32 @@ export const LoginPage: React.FC = () => {
         <div className='max-w-md w-full'>
           <div className='text-center mb-8'>
             <Title level={2} className='!text-theme-text !mb-2'>
-              {LOGIN_TEXTS.TITLE}
+              Вход в систему
             </Title>
             <Text type='secondary' className='text-theme-text-secondary'>
-              {LOGIN_TEXTS.SUBTITLE}
+              Войдите в свой аккаунт для продолжения работы
             </Text>
           </div>
 
           <div className='bg-theme-surface rounded-lg p-6 border border-theme-border shadow-lg'>
-            <AuthForm<LoginData>
-              fields={LOGIN_FORM_CONFIG}
+            <LoginForm
               onSubmit={handleSubmit}
               onFieldsChange={handleFieldChange}
               loading={loading}
               error={error}
               onErrorClose={clearError}
-              submitButtonText={LOGIN_TEXTS.SUBMIT_BUTTON}
-              loadingText={LOGIN_TEXTS.SUBMIT_LOADING}
-              form={form}
             />
           </div>
 
           <div className='text-center mt-6'>
             <Text type='secondary' className='text-theme-text-secondary'>
-              {LOGIN_TEXTS.NO_ACCOUNT}{" "}
+              Нет аккаунта?{" "}
               <Button
                 type='link'
                 onClick={() => navigate("/register")}
                 className='!text-theme-primary hover:!opacity-80 !p-0'
               >
-                {LOGIN_TEXTS.REGISTER_LINK}
+                Зарегистрироваться
               </Button>
             </Text>
           </div>
