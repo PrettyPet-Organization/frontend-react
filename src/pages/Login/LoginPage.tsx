@@ -1,7 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../../shared/lib/hooks/useAuth';
-import UnauthorizedLayout from '../../../widgets/UnauthorizedLayout/UnauthorizedLayout';
+import {Button} from "antd";
+import UnauthorizedLayout from "../../widgets/UnauthorizedLayout/UnauthorizedLayout.tsx";
+import {useAuth} from "../../shared/lib/hooks/useAuth.ts";
 
 export const LoginPage: React.FC = () => {
   const navigate = useNavigate();
@@ -32,22 +33,24 @@ export const LoginPage: React.FC = () => {
               Для демонстрации просто нажмите кнопку входа
             </p>
             
-            <button 
+            <Button
               onClick={handleLogin}
-              className="w-full px-6 py-3 bg-theme-primary text-white rounded-lg hover:opacity-80 transition-opacity font-medium"
+              type='primary'
+              size='large'
+              className={'w-full'}
             >
               Войти
-            </button>
+            </Button>
           </div>
           
           <p className="mt-4 text-theme-text-secondary">
             Нет аккаунта?{' '}
-            <button 
+            <Button
               onClick={() => navigate('/register')}
-              className="text-theme-primary hover:underline"
+              type='link'
             >
               Зарегистрироваться
-            </button>
+            </Button>
           </p>
         </div>
       </main>
