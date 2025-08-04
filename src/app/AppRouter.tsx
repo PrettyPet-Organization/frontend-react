@@ -3,7 +3,6 @@ import ProtectedRoute from "../shared/ui/ProtectedRoute.tsx";
 import {WelcomePage} from "../pages/Welcome/WelcomePage.tsx";
 import {LoginPage} from "../pages/Login/LoginPage.tsx";
 import {RegisterPage} from "../pages/Register/RegisterPage.tsx";
-import {AuthorizedPage} from "../pages/Authorized/AuthorizedPage.tsx";
 import AuthorizedLayout from "../widgets/AuthorizedLayout/AuthorizedLayout.tsx";
 import {AuthorizedRoutes} from "./routes/AuthorizedRoutes.ts";
 

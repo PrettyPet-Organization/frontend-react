@@ -11,7 +11,7 @@ export default defineConfig(({ mode }) => {
             react(),
             tailwindcss(),
         ],
-        base: isProduction ? '/frontend-react/' : '/',
+        base: isProduction ? '/' : '/',
         build: {
             outDir: 'dist',
         },
