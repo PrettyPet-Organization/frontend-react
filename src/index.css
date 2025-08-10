@@ -33,7 +33,7 @@
   --color-surface-variant: #2d2d2d;
   --color-text-primary: #ffffff;
   --color-text-secondary: #b0b0b0;
-  --color-text-tertiary: #808080;
+  --color-text-tertiary: gray;
   --color-border: #404040;
   --color-border-variant: #525252;
   --color-hover: #2d2d2d;
@@ -43,8 +43,8 @@
   --color-warning: #ff9800;
   --color-error: #f44336;
   --color-info: #2196f3;
-  --color-shadow: rgba(0, 0, 0, 0.3);
-  --color-shadow-variant: rgba(0, 0, 0, 0.2);
+  --color-shadow: rgba(0, 0, 0, 0.6);
+  --color-shadow-variant: rgba(0, 0, 0, 0.4);
 }
 
 /* Глобальные стили */
@@ -58,16 +58,15 @@ body {
 
 /* Стили для Ant Design компонентов */
 .ant-btn-primary {
-  background-color: var(--color-primary) !important;
-  border-color: var(--color-primary) !important;
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
 }
 
 .ant-btn-primary:hover {
-  background-color: var(--color-primary) !important;
+  background-color: var(--color-primary);
   opacity: 0.8;
 }
 
-/* Кастомные классы для использования в компонентах */
 .text-theme-primary {
   color: var(--color-primary);
 }
@@ -119,4 +118,42 @@ body {
 /* Дополнительные стили для градиентов */
 .bg-gradient-to-br {
   background: linear-gradient(to bottom right, var(--color-bg), var(--color-surface));
+}
+
+
+/* Исправление стилей автозаполнения для инпутов */
+/* Усиленная специфичность для Ant Design */
+.ant-input:-webkit-autofill,
+.ant-input:-webkit-autofill:hover,
+.ant-input:-webkit-autofill:focus,
+.ant-input:-webkit-autofill:active,
+.ant-input-password-input:-webkit-autofill,
+.ant-input-password-input:-webkit-autofill:hover,
+.ant-input-password-input:-webkit-autofill:focus,
+.ant-input-password-input:-webkit-autofill:active,
+.ant-form-item .ant-input:-webkit-autofill,
+.ant-form-item .ant-input-password-input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px var(--color-surface) inset !important;
+  -webkit-text-fill-color: var(--color-text-primary) !important;
+  border-color: var(--color-border) !important;
+  caret-color: var(--color-text-primary) !important;
+  background-color: var(--color-surface) !important;
+}
+
+/* Специальные стили для темной темы */
+.dark .ant-input:-webkit-autofill,
+.dark .ant-input:-webkit-autofill:hover,
+.dark .ant-input:-webkit-autofill:focus,
+.dark .ant-input:-webkit-autofill:active,
+.dark .ant-input-password-input:-webkit-autofill,
+.dark .ant-input-password-input:-webkit-autofill:hover,
+.dark .ant-input-password-input:-webkit-autofill:focus,
+.dark .ant-input-password-input:-webkit-autofill:active,
+.dark .ant-form-item .ant-input:-webkit-autofill,
+.dark .ant-form-item .ant-input-password-input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px var(--color-surface) inset !important;
+  -webkit-text-fill-color: var(--color-text-primary) !important;
+  border-color: var(--color-border) !important;
+  caret-color: var(--color-text-primary) !important;
+  background-color: var(--color-surface) !important;
 }

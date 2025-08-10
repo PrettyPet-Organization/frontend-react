@@ -11,7 +11,7 @@ const ThemeProvider: FC<{ children: React.ReactNode }> = ({children}) => {
                 token: {
                     colorPrimary: '#ef823d',
                     colorText: currentTheme === 'dark' ? '#ffffff' : '#463033',
-                    colorBgContainer: currentTheme === 'dark' ? '#1e1e1e' : '#ffffff',
+                    colorBgContainer: currentTheme === 'dark' ? '#1e1e1e' : '#f8f9fa',
                     colorBorder: currentTheme === 'dark' ? '#404040' : '#e9ecef',
                     borderRadius: 6,
                 },

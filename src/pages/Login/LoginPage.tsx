@@ -1,59 +1,85 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import {Button} from "antd";
-import UnauthorizedLayout from "../../widgets/UnauthorizedLayout/UnauthorizedLayout.tsx";
-import {useAuth} from "../../shared/lib/hooks/useAuth.ts";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { Button, Typography } from "antd";
+import { useAuth } from "../../shared/lib/hooks/useAuth";
+import { LoginForm } from "../../shared/ui/LoginForm";
+import type { LoginData } from "../../entities/User";
+import UnauthorizedLayout from "../../widgets/UnauthorizedLayout/UnauthorizedLayout";
+
+const { Title, Text } = Typography;
 
 export const LoginPage: React.FC = () => {
   const navigate = useNavigate();
-  const { loginUser } = useAuth();
+  const { loginUserAsync, loading, error, clearError, isAuthorized } = useAuth();
 
-  const handleLogin = () => {
-    // Имитация входа (в реальном приложении здесь будет API запрос)
-    const mockUser = {
-      id: '1',
-      name: 'Тестовый Пользователь',
-      email: 'test@example.com',
+  // Перенаправление если пользователь уже авторизован
+  useEffect(() => {
+    if (isAuthorized) {
+      navigate("/authorized");
+    }
+  }, [isAuthorized, navigate]);
+
+  // Очистка ошибок при размонтировании
+  useEffect(() => {
+    return () => {
+      clearError();
     };
-    
-    loginUser(mockUser);
-    navigate('/authorized');
+  }, [clearError]);
+
+  const handleSubmit = async (values: LoginData) => {
+    try {
+      await loginUserAsync(values);
+      // Перенаправление произойдет автоматически через useEffect
+    } catch (error) {
+      // Ошибка уже обработана в useAuth
+      console.error("Login failed:", error);
+    }
+  };
+
+  const handleFieldChange = () => {
+    // Очищаем ошибки при изменении полей
+    if (error) {
+      clearError();
+    }
   };
 
   return (
     <UnauthorizedLayout>
-      <main className="flex-1 flex flex-col items-center justify-center px-6 text-center">
-        <div className="max-w-md w-full">
-          <h1 className="text-3xl font-bold text-theme-text mb-6">
-            Вход в систему
-          </h1>
-          
-          <div className="bg-theme-surface rounded-lg p-6 border border-theme-border">
-            <p className="text-theme-text-secondary mb-4">
-              Для демонстрации просто нажмите кнопку входа
-            </p>
-            
-            <Button
-              onClick={handleLogin}
-              type='primary'
-              size='large'
-              className={'w-full'}
-            >
-              Войти
-            </Button>
+      <main className='flex-1 flex flex-col items-center justify-center px-6 py-8'>
+        <div className='max-w-md w-full'>
+          <div className='text-center mb-8'>
+            <Title level={2} className='!text-theme-text !mb-2'>
+              Вход в систему
+            </Title>
+            <Text type='secondary' className='text-theme-text-secondary'>
+              Войдите в свой аккаунт для продолжения работы
+            </Text>
           </div>
-          
-          <p className="mt-4 text-theme-text-secondary">
-            Нет аккаунта?{' '}
-            <Button
-              onClick={() => navigate('/register')}
-              type='link'
-            >
-              Зарегистрироваться
-            </Button>
-          </p>
+
+          <div className='bg-theme-surface rounded-lg p-6 border border-theme-border shadow-lg'>
+            <LoginForm
+              onSubmit={handleSubmit}
+              onFieldsChange={handleFieldChange}
+              loading={loading}
+              error={error}
+              onErrorClose={clearError}
+            />
+          </div>
+
+          <div className='text-center mt-6'>
+            <Text type='secondary' className='text-theme-text-secondary'>
+              Нет аккаунта?{" "}
+              <Button
+                type='link'
+                onClick={() => navigate("/register")}
+                className='!text-theme-primary hover:!opacity-80 !p-0'
+              >
+                Зарегистрироваться
+              </Button>
+            </Text>
+          </div>
         </div>
       </main>
     </UnauthorizedLayout>
   );
-}; 
+};
