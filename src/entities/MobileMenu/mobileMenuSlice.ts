@@ -1,28 +1,28 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 interface MobileMenuState {
-    isOpened: boolean;
+	isOpened: boolean;
 }
 
 const initialState: MobileMenuState = {
-    isOpened: false,
-}
+	isOpened: false,
+};
 
 export const mobileMenuSlice = createSlice({
-    name: 'mobileMenu',
-    initialState,
-    reducers: {
-        open: (state) => {
-            state.isOpened = true;
-        },
-        close: (state) => {
-            state.isOpened = false;
-        },
-        toggle: (state) => {
-            state.isOpened = !state.isOpened;
-        }
-    }
+	name: 'mobileMenu',
+	initialState,
+	reducers: {
+		open: (state) => {
+			state.isOpened = true;
+		},
+		close: (state) => {
+			state.isOpened = false;
+		},
+		toggle: (state) => {
+			state.isOpened = !state.isOpened;
+		},
+	},
 });
 
-export const {open, close, toggle} = mobileMenuSlice.actions;
+export const { open, close, toggle } = mobileMenuSlice.actions;
 export default mobileMenuSlice.reducer;

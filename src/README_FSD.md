@@ -20,27 +20,33 @@ src/
 ## Описание папок
 
 ### app/
+
 - Точка входа, провайдеры (например, ThemeProvider, StoreProvider), роутинг, глобальные стили.
 - Пример: `src/app/AppRouter.tsx`, `src/app/providers/ThemeProvider.tsx`
 
 ### pages/
+
 - Страницы приложения, каждая страница — отдельная папка.
 - Внутри могут использоваться widgets, features, entities.
 - Пример: `src/pages/MainPage/`, `src/pages/ProfilePage/`
 
 ### widgets/
+
 - Крупные независимые UI-блоки, которые могут включать в себя несколько features и entities.
 - Пример: `src/widgets/Header/`, `src/widgets/Sidebar/`
 
 ### features/
+
 - Завершённые пользовательские сценарии (например, форма логина, фильтр товаров).
 - Пример: `src/features/AuthByUsername/`, `src/features/SortProducts/`
 
 ### entities/
+
 - Основные бизнес-сущности (например, User, Product), их логика и UI.
 - Пример: `src/entities/User/`, `src/entities/Product/`
 
 ### shared/
+
 - Общие ресурсы, используемые во всём проекте.
   - `ui/` — атомарные и переиспользуемые UI-компоненты (Button, Input, Modal и т.д.)
   - `lib/` — утилиты, хелперы, кастомные хуки
@@ -59,6 +65,7 @@ src/pages/MainPage/
 ```
 
 ## Рекомендации
+
 - Каждый слой (pages, widgets, features, entities, shared) должен быть максимально независимым.
 - Внутри каждой фичи/сущности/виджета рекомендуется использовать подпапки `model/`, `ui/`, `api/`, если это необходимо.
 - Не используйте абсолютные импорты вне слоя shared.
@@ -66,4 +73,4 @@ src/pages/MainPage/
 
 ---
 
-Если есть вопросы по наполнению конкретных папок — смотри [документацию FSD](https://feature-sliced.design/docs). 
+Если есть вопросы по наполнению конкретных папок — смотри [документацию FSD](https://feature-sliced.design/docs).
