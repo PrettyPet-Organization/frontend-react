@@ -1,11 +1,7 @@
-import {type FC} from 'react';
+import { type FC } from 'react';
 
 const ProjectCatalogPage: FC = () => {
-    return (
-        <div>
-            Catalog page
-        </div>
-    );
+	return <div>Catalog page</div>;
 };
 
 export default ProjectCatalogPage;

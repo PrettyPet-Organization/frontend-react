@@ -3,17 +3,17 @@ import { useAuth } from '../lib/hooks/useAuth';
 import type { FC } from 'react';
 
 interface ProtectedRouteProps {
-  children: React.ReactNode;
+	children: React.ReactNode;
 }
 
 const ProtectedRoute: FC<ProtectedRouteProps> = ({ children }) => {
-  const { isAuthorized } = useAuth();
+	const { isAuthorized } = useAuth();
 
-  if (!isAuthorized) {
-    return <Navigate to="/login" replace />;
-  }
+	if (!isAuthorized) {
+		return <Navigate to='/login' replace />;
+	}
 
-  return <>{children}</>;
+	return <>{children}</>;
 };
 
-export default ProtectedRoute; 
+export default ProtectedRoute;
