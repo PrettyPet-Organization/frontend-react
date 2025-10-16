@@ -14,7 +14,6 @@ export const ThemeToggle: React.FC = () => {
 		currentTheme,
 		isSystemTheme,
 		changeTheme,
-		toggleCurrentTheme,
 		useSystemTheme,
 	} = useTheme();
 
@@ -44,7 +43,6 @@ export const ThemeToggle: React.FC = () => {
 		...item,
 		label: (
 			<Space>
-				{item.icon}
 				{item.label}
 				{((item.key === currentTheme && !isSystemTheme) ||
 					(item.key === 'system' && isSystemTheme)) && <CheckOutlined />}
@@ -61,7 +59,6 @@ export const ThemeToggle: React.FC = () => {
 			<Button
 				type='text'
 				icon={currentTheme === 'dark' ? <MoonOutlined /> : <SunOutlined />}
-				onClick={toggleCurrentTheme}
 				className='btn hover:bg-theme-hover transition-colors'
 				size='large'
 			/>
