@@ -1,6 +1,4 @@
-import { type FC } from 'react';
-
-const ProjectCatalogPage: FC = () => {
+const ProjectCatalogPage = () => {
 	return <div>Catalog page</div>;
 };
 
