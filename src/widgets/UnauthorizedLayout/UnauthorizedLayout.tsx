@@ -2,6 +2,7 @@ import { ThemeToggle } from '../../features/ThemeToggle/ui/ThemeToggle.tsx';
 import type { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../../shared/ui/Logo.tsx';
+import { ROUTES } from '../../shared/config/routes.ts';
 
 interface UnauthorizedLayoutProps {
 	children: React.ReactNode;
@@ -11,14 +12,17 @@ const UnauthorizedLayout: FC<UnauthorizedLayoutProps> = ({ children }) => {
 	const navigate = useNavigate();
 
 	return (
-		<div className='min-h-screen bg-gradient-to-br from-theme-bg to-theme-surface flex flex-col'>
+		<div
+			className='min-h-screen bg-gradient-to-br from-theme-bg to-theme-surface grid'
+			style={{ gridTemplateRows: 'auto 1fr auto' }}
+		>
 			{/* Header с логотипом и переключателем темы */}
 			<header className='flex justify-between items-center p-6'>
-				<Logo onClick={() => navigate('/')} />
+				<Logo onClick={() => navigate(ROUTES.HOME)} />
 				<ThemeToggle />
 			</header>
 
-			{children}
+			<main>{children}</main>
 
 			{/* Footer */}
 			<footer className='text-center py-6 text-theme-text-tertiary'>

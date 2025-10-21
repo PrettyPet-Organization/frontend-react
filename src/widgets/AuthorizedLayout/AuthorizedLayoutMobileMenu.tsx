@@ -3,6 +3,7 @@ import { useMobileMenu } from '../../shared/lib/hooks/useMobuleMenu.ts';
 import Logo from '../../shared/ui/Logo.tsx';
 import { useNavigate } from 'react-router-dom';
 import LogoutButton from '../../features/LogoutButton/LogoutButton.tsx';
+import { ROUTES } from '../../shared/config/routes.ts';
 
 const AuthorizedLayoutMobileMenu = () => {
 	const { isOpened, closeMobileMenu } = useMobileMenu();
@@ -17,7 +18,7 @@ const AuthorizedLayoutMobileMenu = () => {
       ${isOpened ? 'translate-x-0' : 'translate-x-full'}
     `}
 		>
-			<Logo onClick={() => navigate('/authorized')} />
+			<Logo onClick={() => navigate(ROUTES.HOME)} />
 			<AuthorizedNavBar />
 			<LogoutButton />
 		</div>

@@ -1,23 +1,27 @@
 import MobileMenuToggle from '../../features/MobileMenuToggle/MobileMenuToggle.tsx';
 import { ThemeToggle } from '../../features/ThemeToggle/ui/ThemeToggle.tsx';
-import { useAuth } from '../../shared/lib/hooks/useAuth.ts';
+import LogoutButton from '../../features/LogoutButton/LogoutButton.tsx';
+import Logo from '../../shared/ui/Logo.tsx';
+import { useNavigate } from 'react-router-dom';
+import { ROUTES } from '../../shared/config/routes.ts';
 
 const AuthorizedLayoutHeader = () => {
-	const { user } = useAuth();
+	const navigate = useNavigate();
 
 	return (
-		<header className='flex justify-between items-center p-6'>
-			<div className='flex items-center space-x-4'>
-				<span className='text-theme-text-secondary'>
-					Привет, {user?.email}!
-				</span>
-			</div>
+		<header className='flex justify-end not-sm:justify-between items-center p-6'>
 			<span className='sm:hidden'>
-				<MobileMenuToggle />
+				<div className='flex items-center space-x-2'>
+					<Logo onClick={() => navigate(ROUTES.HOME)} />
+				</div>
 			</span>
-			<span className='hidden sm:block'>
+			<div className='flex items-center space-x-4'>
 				<ThemeToggle />
-			</span>
+
+				<MobileMenuToggle />
+
+				<LogoutButton />
+			</div>
 		</header>
 	);
 };

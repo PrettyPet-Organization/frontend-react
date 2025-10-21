@@ -12,7 +12,7 @@ interface ApiResponse<T> {
 	success: boolean;
 }
 
-interface ApiError {
+export interface ApiError {
 	message: string;
 	code?: string;
 }
@@ -107,5 +107,22 @@ export const checkEmailAvailability = async (
 	return !existingUser;
 };
 
-// Экспорт типов для использования в компонентах
-export type { ApiResponse, ApiError };
+// Mock data for profile
+export interface ProfileData {
+	id: number;
+	createdAt: string;
+	updatedAt: string;
+	email: string;
+	fullName: string;
+	bio: string;
+	preferences: string;
+	experience: string;
+	level: {
+		id: number;
+		name: string;
+	};
+	skills: Array<{
+		id: number;
+		name: string;
+	}>;
+}

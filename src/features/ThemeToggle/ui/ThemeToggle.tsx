@@ -7,28 +7,23 @@ import {
 	CheckOutlined,
 } from '@ant-design/icons';
 import { useTheme } from '../../../shared/lib/hooks/useTheme';
-import type { ThemeType } from '../../../shared/config/theme/palettes';
 
 export const ThemeToggle: React.FC = () => {
-	const {
-		currentTheme,
-		isSystemTheme,
-		changeTheme,
-		useSystemTheme,
-	} = useTheme();
+	const { currentTheme, isSystemTheme, changeTheme, useSystemTheme } =
+		useTheme();
 
 	const items = [
 		{
 			key: 'light',
 			label: 'Светлая тема',
 			icon: <SunOutlined />,
-			onClick: () => changeTheme('light' as ThemeType),
+			onClick: () => changeTheme('light'),
 		},
 		{
 			key: 'dark',
 			label: 'Темная тема',
 			icon: <MoonOutlined />,
-			onClick: () => changeTheme('dark' as ThemeType),
+			onClick: () => changeTheme('dark'),
 		},
 		{
 			key: 'system',
