@@ -1,17 +1,17 @@
 import { useSelector, useDispatch } from 'react-redux';
-import type { RootState } from '../../../app/store';
+import type { RootState } from '@/app/store';
 import {
 	login,
 	logout,
-	setLoading,
-	setError,
 	registerSuccess,
+	setError,
+	setLoading,
 	registerUser,
 	loginUser as loginUserAPI,
 	type LoginData,
 	type RegisterData,
 	type User,
-} from '../../../entities/User';
+} from '@/entities/User';
 
 export const useAuth = () => {
 	const dispatch = useDispatch();

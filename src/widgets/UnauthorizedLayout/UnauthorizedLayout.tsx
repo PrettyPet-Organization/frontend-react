@@ -1,8 +1,8 @@
-import { ThemeToggle } from '../../features/ThemeToggle/ui/ThemeToggle.tsx';
+import { ThemeToggle } from '@/features/ThemeToggle/ui/ThemeToggle.tsx';
 import type { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Logo from '../../shared/ui/Logo.tsx';
-import { ROUTES } from '../../shared/config/routes.ts';
+import Logo from '@/shared/ui/Logo/Logo';
+import { ROUTES } from '@/shared/config/routes.ts';
 
 interface UnauthorizedLayoutProps {
 	children: React.ReactNode;

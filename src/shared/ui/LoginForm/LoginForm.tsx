@@ -6,8 +6,8 @@ import {
 	EyeInvisibleOutlined,
 	EyeOutlined,
 } from '@ant-design/icons';
-import type { LoginData } from '../../../entities/User';
-import { ValidationUtils } from '../../../entities/User';
+import type { LoginData } from '@/entities/User';
+import { ValidationUtils } from '@/entities/User';
 
 interface LoginFormProps {
 	onSubmit: (values: LoginData) => Promise<void>;

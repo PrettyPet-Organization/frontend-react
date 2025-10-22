@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'antd';
-import { ASSETS } from '../../shared/config/assets.ts';
+import { ASSETS } from '@/shared/config/assets.ts';
 
 export const WelcomePage = () => {
 	const navigate = useNavigate();

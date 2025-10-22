@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { ThemeType } from '../../../shared/config/theme/palettes';
+import type { ThemeType } from '@/shared/config/theme/palettes';
 
 interface ThemeState {
 	currentTheme: ThemeType;
