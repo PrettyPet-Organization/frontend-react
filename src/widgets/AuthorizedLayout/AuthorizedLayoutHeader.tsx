@@ -1,9 +1,9 @@
-import MobileMenuToggle from '../../features/MobileMenuToggle/MobileMenuToggle.tsx';
-import { ThemeToggle } from '../../features/ThemeToggle/ui/ThemeToggle.tsx';
-import LogoutButton from '../../features/LogoutButton/LogoutButton.tsx';
-import Logo from '../../shared/ui/Logo.tsx';
+import MobileMenuToggle from '@/features/MobileMenuToggle/MobileMenuToggle.tsx';
+import { ThemeToggle } from '@/features/ThemeToggle/ui/ThemeToggle.tsx';
+import LogoutButton from '@/features/LogoutButton/LogoutButton.tsx';
+import Logo from '@/shared/ui/Logo/Logo';
 import { useNavigate } from 'react-router-dom';
-import { ROUTES } from '../../shared/config/routes.ts';
+import { ROUTES } from '@/shared/config/routes.ts';
 
 const AuthorizedLayoutHeader = () => {
 	const navigate = useNavigate();

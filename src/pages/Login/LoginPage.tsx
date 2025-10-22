@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Typography } from 'antd';
-import { useAuth } from '../../shared/lib/hooks/useAuth';
-import { LoginForm } from '../../shared/ui/LoginForm';
-import type { LoginData } from '../../entities/User';
+import { useAuth } from '@/shared/lib/hooks/useAuth';
+import { LoginForm } from '@/shared/ui/LoginForm';
+import type { LoginData } from '@/entities/User';
 
 const { Title, Text } = Typography;
 

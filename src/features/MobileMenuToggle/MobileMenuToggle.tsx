@@ -1,4 +1,4 @@
-import { useMobileMenu } from '../../shared/lib/hooks/useMobuleMenu.ts';
+import { useMobileMenu } from '@/shared/lib/hooks/useMobileMenu';
 import { CloseOutlined, MenuOutlined } from '@ant-design/icons';
 
 const MobileMenuToggle = () => {

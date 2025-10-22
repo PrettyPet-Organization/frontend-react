@@ -1,9 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute.tsx';
-import AuthorizedLayout from '../widgets/AuthorizedLayout/AuthorizedLayout.tsx';
+import AuthorizedLayout from '@/widgets/AuthorizedLayout/AuthorizedLayout.tsx';
 import { AuthorizedRoutes } from './routes/AuthorizedRoutes.ts';
 import { UnAuthorizedRoutes } from './routes/UnAuthorizedRoutes.ts';
-import UnauthorizedLayout from '../widgets/UnauthorizedLayout/UnauthorizedLayout.tsx';
+import UnauthorizedLayout from '@/widgets/UnauthorizedLayout/UnauthorizedLayout.tsx';
 import { PublicRoutes } from './routes/PublicRoutes.ts';
 
 export const AppRouter = () => {

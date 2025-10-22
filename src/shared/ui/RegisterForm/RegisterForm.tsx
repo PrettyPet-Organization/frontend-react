@@ -6,8 +6,8 @@ import {
 	EyeInvisibleOutlined,
 	EyeOutlined,
 } from '@ant-design/icons';
-import type { RegisterData } from '../../../entities/User';
-import { ValidationUtils, MIN_PASSWORD_LENGTH } from '../../../entities/User';
+import type { RegisterData } from '@/entities/User';
+import { MIN_PASSWORD_LENGTH, ValidationUtils } from '@/entities/User';
 
 interface RegisterFormProps {
 	onSubmit: (values: RegisterData) => Promise<void>;

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ROUTES } from '../../shared/config/routes.ts';
+import { ROUTES } from '@/shared/config/routes.ts';
 
 const authorizedRoutList: { name: string; link: string }[] = [
 	{

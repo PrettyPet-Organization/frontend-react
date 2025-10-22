@@ -1,5 +1,5 @@
 import { type FC } from 'react';
-import { ASSETS } from '../config/assets.ts';
+import { ASSETS } from '@/shared/config/assets.ts';
 
 type LogoProps = {
 	onClick?: () => void;

@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import type { RootState } from '../../../app/store';
+import type { RootState } from '@/app/store';
 import {
 	setTheme,
 	toggleTheme,
 	setSystemTheme,
-} from '../../../entities/Theme/model/themeSlice';
-import type { ThemeType } from '../../config/theme/palettes';
+} from '@/entities/Theme/model/themeSlice';
+import type { ThemeType } from '@/shared/config/theme/palettes';
 
 export const useTheme = () => {
 	const dispatch = useDispatch();

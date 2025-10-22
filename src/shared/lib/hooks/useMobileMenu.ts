@@ -1,10 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import type { RootState } from '../../../app/store';
-import {
-	close,
-	open,
-	toggle,
-} from '../../../entities/MobileMenu/mobileMenuSlice.ts';
+import type { RootState } from '@/app/store';
+import { close, open, toggle } from '@/entities/MobileMenu/mobileMenuSlice.ts';
 
 export const useMobileMenu = () => {
 	const dispatch = useDispatch();

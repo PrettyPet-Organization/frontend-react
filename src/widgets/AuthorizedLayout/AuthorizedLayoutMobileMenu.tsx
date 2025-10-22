@@ -1,9 +1,9 @@
-import AuthorizedNavBar from '../../features/AuthorizedNavBar/AuthorizedNavBar.tsx';
-import { useMobileMenu } from '../../shared/lib/hooks/useMobuleMenu.ts';
-import Logo from '../../shared/ui/Logo.tsx';
+import AuthorizedNavBar from '@/features/AuthorizedNavBar/AuthorizedNavBar.tsx';
+import { useMobileMenu } from '@/shared/lib/hooks/useMobileMenu';
+import Logo from '@/shared/ui/Logo/Logo';
 import { useNavigate } from 'react-router-dom';
-import LogoutButton from '../../features/LogoutButton/LogoutButton.tsx';
-import { ROUTES } from '../../shared/config/routes.ts';
+import LogoutButton from '@/features/LogoutButton/LogoutButton.tsx';
+import { ROUTES } from '@/shared/config/routes.ts';
 
 const AuthorizedLayoutMobileMenu = () => {
 	const { isOpened, closeMobileMenu } = useMobileMenu();

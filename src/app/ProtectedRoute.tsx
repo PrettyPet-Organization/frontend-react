@@ -1,7 +1,7 @@
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
-import { useAuth } from '../shared/lib/hooks/useAuth';
-import { Preloader } from '../shared/ui/preloader';
-import { ROUTES } from '../shared/config/routes';
+import { useAuth } from '@/shared/lib/hooks/useAuth';
+import { Preloader } from '@/shared/ui/preloader';
+import { ROUTES } from '@/shared/config/routes';
 
 const ProtectedRoute = ({
 	authRequired = true,

@@ -1,8 +1,8 @@
 import { Provider } from 'react-redux';
-import { store } from './app/store';
-import { AppRouter } from './app/AppRouter';
-import ThemeProvider from './shared/providers/ThemeProvider.tsx';
-import RouterProvider from './shared/providers/RouterProvider';
+import { store } from '@/app/store';
+import { AppRouter } from '@/app/AppRouter';
+import ThemeProvider from '@/shared/providers/ThemeProvider.tsx';
+import RouterProvider from '@/shared/providers/RouterProvider';
 
 // Главный компонент с Provider
 function App() {

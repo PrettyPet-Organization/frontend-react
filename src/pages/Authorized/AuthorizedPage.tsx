@@ -1,4 +1,4 @@
-import { useAuth } from '../../shared/lib/hooks/useAuth.ts';
+import { useAuth } from '@/shared/lib/hooks/useAuth.ts';
 
 export const AuthorizedPage = () => {
 	const { user } = useAuth();

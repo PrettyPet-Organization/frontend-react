@@ -9,7 +9,7 @@
 		"start": "vite",
 		"build": "tsc -b && vite build",
 		"preview": "vite preview",
-		"tsc": "tsc --project tsconfig.app.json",
+		"tsc": "tsc -p tsconfig.app.json",
 		"lint": "eslint . --ext .js,.jsx,.ts,.tsx",
 		"lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
 		"format": "prettier . --write --ignore-unknown --ignore-path .prettierignore --log-level error",
@@ -18,7 +18,7 @@
 		"deploy": "gh-pages -d dist"
 	},
 	"lint-staged": {
-		"*.{ts,tsx}": "bash -c 'tsc --project tsconfig.app.json'",
+		"*.{ts,tsx}": "bash -c 'tsc -p tsconfig.app.json'",
 		"*.{js,jsx,ts,tsx}": "eslint --fix",
 		"*": "prettier --write --ignore-unknown --ignore-path .prettierignore --log-level error"
 	},
@@ -57,8 +57,6 @@
 		"lint-staged": "^16.2.4",
 		"postcss": "^8.5.6",
 		"prettier": "^3.6.2",
-		"sass": "^1.89.2",
-		"sass-embedded": "^1.89.2",
 		"tailwindcss": "^4.1.10",
 		"typescript": "~5.8.3",
 		"typescript-eslint": "^8.30.1",

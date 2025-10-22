@@ -6,7 +6,7 @@ import {
 	SettingOutlined,
 	CheckOutlined,
 } from '@ant-design/icons';
-import { useTheme } from '../../../shared/lib/hooks/useTheme';
+import { useTheme } from '@/shared/lib/hooks/useTheme';
 
 export const ThemeToggle: React.FC = () => {
 	const { currentTheme, isSystemTheme, changeTheme, useSystemTheme } =
