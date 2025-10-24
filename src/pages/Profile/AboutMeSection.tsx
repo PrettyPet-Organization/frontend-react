@@ -22,6 +22,7 @@ const AboutMeSection = ({
 	preferences,
 }: AboutMeProps) => {
 	return (
+		// TODO: form and validation to modal, button to open modal
 		<Card
 			title={
 				<h3 className='flex text-xl items-center'>

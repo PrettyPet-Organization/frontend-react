@@ -9,6 +9,7 @@ interface ProfileHeaderProps {
 }
 
 const ProfileHeader = ({ fullName, email }: ProfileHeaderProps) => {
+	// TODO: form for avatar and validation, button(input) to open native image selection menu
 	return (
 		<div className='flex flex-col items-center'>
 			<div className='mb-4'>
