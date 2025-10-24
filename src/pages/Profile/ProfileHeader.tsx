@@ -1,22 +1,47 @@
-import { Avatar, Typography } from 'antd';
-import { UserOutlined, MailOutlined } from '@ant-design/icons';
+import { Typography } from 'antd';
+import { MailOutlined } from '@ant-design/icons';
+import { useState } from 'react';
+import { AvatarUpload } from '@/entities/User';
 
 const { Title, Paragraph } = Typography;
 
 interface ProfileHeaderProps {
 	fullName: string;
 	email: string;
+	avatarUrl?: string;
+	onAvatarChange: (file: File) => void;
+	loading?: boolean;
 }
 
-const ProfileHeader = ({ fullName, email }: ProfileHeaderProps) => {
-	// TODO: form for avatar and validation, button(input) to open native image selection menu
+const ProfileHeader = ({
+	fullName,
+	email,
+	avatarUrl,
+	onAvatarChange,
+	loading = false,
+}: ProfileHeaderProps) => {
+	const [isUploading, setIsUploading] = useState(false);
+
+	const handleAvatarChange = async (file: File) => {
+		setIsUploading(true);
+		try {
+			// TODO: Implement actual avatar upload logic
+			console.log('Avatar file selected:', file);
+			onAvatarChange(file);
+		} catch (error) {
+			console.error('Avatar upload failed:', error);
+		} finally {
+			setIsUploading(false);
+		}
+	};
+
 	return (
 		<div className='flex flex-col items-center'>
-			<div className='mb-4'>
-				<Avatar
-					size={128}
-					icon={<UserOutlined />}
-					className='bg-theme-primary text-white'
+			<div className='mb-4 relative'>
+				<AvatarUpload
+					avatarUrl={avatarUrl}
+					onChange={handleAvatarChange}
+					loading={isUploading || loading}
 				/>
 			</div>
 

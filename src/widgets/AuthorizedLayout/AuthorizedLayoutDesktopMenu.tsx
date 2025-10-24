@@ -1,7 +1,7 @@
 import AuthorizedNavBar from '@/features/AuthorizedNavBar/AuthorizedNavBar.tsx';
 import { useNavigate } from 'react-router-dom';
-import Logo from '@/shared/ui/Logo/Logo';
 import { ROUTES } from '@/shared/config/routes.ts';
+import { Logo } from '@/shared/ui';
 
 const AuthorizedLayoutDesktopMenu = () => {
 	const navigate = useNavigate();

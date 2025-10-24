@@ -1,11 +1,10 @@
-import { type FC } from 'react';
 import { ASSETS } from '@/shared/config/assets.ts';
 
-type LogoProps = {
+interface LogoProps {
 	onClick?: () => void;
-};
+}
 
-const Logo: FC<LogoProps> = ({ onClick }) => {
+export const Logo = ({ onClick }: LogoProps) => {
 	return (
 		<div
 			className='flex items-center space-x-2 cursor-pointer'
@@ -20,5 +19,3 @@ const Logo: FC<LogoProps> = ({ onClick }) => {
 		</div>
 	);
 };
-
-export default Logo;

@@ -22,6 +22,7 @@ const mockProfileData = {
 		{ id: 2, name: 'TypeScript', level: 100 },
 		{ id: 3, name: 'Node.js', level: 10 },
 	],
+	avatarUrl: undefined,
 };
 
 const ProfilePage = () => {
@@ -33,6 +34,11 @@ const ProfilePage = () => {
 				<ProfileHeader
 					fullName={profileData.fullName}
 					email={profileData.email}
+					avatarUrl={profileData.avatarUrl}
+					onAvatarChange={function (file: File): void {
+						// TODO: Implement actual avatar upload logic
+						console.log('Avatar changed:', file);
+					}}
 				/>
 			</div>
 
