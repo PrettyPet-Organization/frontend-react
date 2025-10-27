@@ -1,7 +1,7 @@
 import { useRef, useState, type ChangeEvent } from 'react';
 import { Avatar, Button } from 'antd';
 import { UserOutlined, EditOutlined } from '@ant-design/icons';
-import { avatarSchema } from '../../model/validation';
+import { avatarSchema } from '../model/validation';
 
 interface AvatarUploadProps {
 	avatarUrl?: string;

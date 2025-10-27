@@ -7,7 +7,7 @@ import {
 	EditOutlined,
 } from '@ant-design/icons';
 import { useState } from 'react';
-import { EditProfileForm } from '@/entities/User';
+import { EditProfileForm } from '@/features/EditProfileForm';
 
 const { Title, Paragraph } = Typography;
 

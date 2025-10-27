@@ -1,7 +1,7 @@
 import { Typography } from 'antd';
 import { MailOutlined } from '@ant-design/icons';
 import { useState } from 'react';
-import { AvatarUpload } from '@/entities/User';
+import { AvatarUpload } from '@/features/AvatarUpload';
 
 const { Title, Paragraph } = Typography;
 

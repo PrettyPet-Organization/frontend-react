@@ -1,8 +1,7 @@
-import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Input, Button } from 'antd';
-import { profileSchema, type FormValues } from '../../model/validation';
+import { profileSchema, type FormValues } from '../model/validation';
 
 interface EditProfileFormProps {
 	initialValues: FormValues;
@@ -11,12 +10,12 @@ interface EditProfileFormProps {
 	saveLoading?: boolean;
 }
 
-export const EditProfileForm: React.FC<EditProfileFormProps> = ({
+export const EditProfileForm = ({
 	initialValues,
 	onSubmit,
 	onCancel,
 	saveLoading = false,
-}) => {
+}: EditProfileFormProps) => {
 	const {
 		control,
 		handleSubmit,

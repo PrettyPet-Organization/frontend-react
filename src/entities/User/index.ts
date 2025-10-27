@@ -10,5 +10,3 @@ export {
 } from './model/userSlice';
 export { ValidationUtils, MIN_PASSWORD_LENGTH } from './model/constants';
 export { registerUser, loginUser, checkEmailAvailability } from './api/userAPI';
-export { EditProfileForm } from './ui/EditProfileForm/EditProfileForm';
-export { AvatarUpload } from './ui/AvatarUpload/AvatarUpload';
